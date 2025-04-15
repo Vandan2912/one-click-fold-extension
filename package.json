@@ -2,7 +2,7 @@
   "name": "collapse-all-code",
   "displayName": "Collapse All Code",
   "description": "One-click button to collapse all functions and blocks in large TypeScript/JavaScript files.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "VandanPatel",
   "engines": {
     "vscode": "^1.99.0"
