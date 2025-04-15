@@ -1,8 +1,9 @@
 {
-  "name": "oneclickfold",
-  "displayName": "OneClickFold",
-  "description": "",
-  "version": "0.0.1",
+  "name": "collapse-all-code",
+  "displayName": "Collapse All Code",
+  "description": "One-click button to collapse all functions and blocks in large TypeScript/JavaScript files.",
+  "version": "1.0.0",
+  "publisher": "b0137887-1786-6881-9334-cb20219a0f53",
   "engines": {
     "vscode": "^1.99.0"
   },
@@ -11,18 +12,36 @@
   ],
   "activationEvents": [],
   "main": "./dist/extension.js",
+  "icon": "resources/icons/fold-light.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Vandan2912/one-click-fold-extension"
+  },
   "contributes": {
     "commands": [
       {
-        "command": "oneclickfold.helloWorld",
-        "title": "Hello World"
+        "command": "collapseAllCode.foldAll",
+        "title": "Collapse All Code",
+        "category": "Code Tools",
+        "icon": {
+          "light": "resources/icons/fold-light.svg",
+          "dark": "resources/icons/fold-dark.svg"
+        }
       }
-    ]
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "collapseAllCode.foldAll",
+          "when": "editorTextFocus",
+          "group": "navigation"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
     "compile": "npm run check-types && npm run lint && node esbuild.js",
-    "watch": "npm-run-all -p watch:*",
     "watch:esbuild": "node esbuild.js --watch",
     "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
     "package": "npm run check-types && npm run lint && node esbuild.js --production",
@@ -31,19 +50,21 @@
     "pretest": "npm run compile-tests && npm run compile && npm run lint",
     "check-types": "tsc --noEmit",
     "lint": "eslint src",
-    "test": "vscode-test"
+    "test": "vscode-test",
+    "build": "node esbuild.js --production",
+    "dev": "node esbuild.js --watch"
   },
   "devDependencies": {
-    "@types/vscode": "^1.99.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "20.x",
+    "@types/vscode": "^1.99.1",
     "@typescript-eslint/eslint-plugin": "^8.28.0",
     "@typescript-eslint/parser": "^8.28.0",
-    "eslint": "^9.23.0",
-    "esbuild": "^0.25.1",
-    "npm-run-all": "^4.1.5",
-    "typescript": "^5.8.2",
     "@vscode/test-cli": "^0.0.10",
-    "@vscode/test-electron": "^2.4.1"
+    "@vscode/test-electron": "^2.4.1",
+    "esbuild": "^0.25.2",
+    "eslint": "^9.23.0",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.8.2"
   }
 }
