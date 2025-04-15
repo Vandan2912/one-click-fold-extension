@@ -1,11 +1,20 @@
 import * as vscode from "vscode";
 
 export function activate(context: vscode.ExtensionContext) {
-  const disposable = vscode.commands.registerCommand("collapseAllCode.foldAll", () => {
-    vscode.commands.executeCommand("editor.foldAll");
-  });
+  context.subscriptions.push(
+    vscode.commands.registerCommand("collapseAllCode.foldAll", () => {
+      const editor = vscode.window.activeTextEditor;
+      if (!editor) {
+        return;
+      }
 
-  context.subscriptions.push(disposable);
+      const { document } = editor;
+      const totalLines = document.lineCount;
+
+      for (let line = 0; line < totalLines; line++) {
+        // const range = new vscode.Range(line, 0, line, 0);
+        vscode.commands.executeCommand("editor.fold", { selectionLines: [line] });
+      }
+    })
+  );
 }
-
-export function deactivate() {}

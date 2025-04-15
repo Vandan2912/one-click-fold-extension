@@ -2,7 +2,7 @@
   "name": "collapse-all-code",
   "displayName": "Collapse All Code",
   "description": "One-click button to collapse all functions and blocks in large files.",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "publisher": "VandanPatel",
   "engines": {
     "vscode": "^1.99.0"
@@ -35,8 +35,8 @@
         "title": "Collapse All Code",
         "category": "Code Tools",
         "icon": {
-          "light": "resources/icons/fold-light.svg",
-          "dark": "resources/icons/fold-dark.svg"
+          "light": "resources/icons/fold-light.png",
+          "dark": "resources/icons/fold-dark.png"
         }
       }
     ],
